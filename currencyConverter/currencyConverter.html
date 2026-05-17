@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="../src/output.css" />
+  </head>
+  <body>
+    <div class="flex flex-col justify-center items-center h-screen bg-gray-100">
+      <div class="flex flex-col items-center p-16 rounded-2xl bg-gray-200">
+        <input
+          class="px-6 py-2 my-2 bg-gray-300 rounded-2xl"
+          type="text"
+          name=""
+          id="fromCurrency"
+          required
+          placeholder="Enter a Currency name"
+        />
+        <span>TO</span>
+
+        <input
+          class="px-6 py-2 my-2 bg-gray-300 rounded-2xl"
+          type="text"
+          name=""
+          id="toCurrency"
+          required
+          placeholder="Enter a Currency name"
+        />
+        <div id="convertRate">
+          <p>-- TO -- is --</p>
+        </div>
+        <button
+          id="convertBtn"
+          class="px-4 py-2 bg-gray-400 text-white rounded-2xl mt-4"
+        >
+          Convert
+        </button>
+      </div>
+    </div>
+
+    <script>
+      const MY_API = "d65b85b11accc39930bcee6b";
+      let convertBtn = document.getElementById("convertBtn");
+      let convertRate = document.getElementById("convertRate");
+
+      convertBtn.addEventListener("click", async () => {
+        let fromCurrency = document
+          .getElementById("fromCurrency")
+          .value.toUpperCase();
+        let toCurrency = document
+          .getElementById("toCurrency")
+          .value.toUpperCase();
+
+        console.log(toCurrency);
+
+        try {
+          let response = await fetch(
+            `https://v6.exchangerate-api.com/v6/${MY_API}/latest/${fromCurrency}`,
+          );
+          let data = await response.json();
+
+          let rate = data.conversion_rates[toCurrency];
+
+          if (!rate) {
+            convertRate.innerHTML = "<p>Enter a correct currency code</p>";
+          } else {
+            convertRate.innerHTML = `
+                <p> ${fromCurrency} TO ${toCurrency} is ${rate} </p>
+                `;
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      });
+    </script>
+  </body>
+</html>

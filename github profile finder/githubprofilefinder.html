@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input
+      type="text"
+      name=""
+      id="profile"
+      placeholder="Enter a correct profile name"
+      required
+    />
+    <button id="searchbtn">Search</button>
+
+    <script>
+      let searchBtn = document.getElementById("searchbtn");
+
+      searchBtn.addEventListener("click", async () => {
+        let profileInput = document.getElementById("profile");
+        let profile = profileInput.value.replaceAll(" ", "");
+        console.log(profile);
+
+        if (!profile) {
+          alert("Enter a valid profile name!");
+        } else {
+          window.open(`https://github.com/${profile}`, "_blank");
+          profileInput.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>

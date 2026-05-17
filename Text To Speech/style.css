@@ -1,0 +1,96 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, orange, white, green);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 8px 12px rgba(1, 62, 218, 0.7);
+    width: 500px;
+    margin: auto; /* Center the container vertically */
+}
+
+h1 {
+    color: #333;
+}
+
+textarea {
+    width: 100%;
+    height: 100px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    resize: none;
+    font-size: 16px;
+}
+
+button {
+    background: #007BFF;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+footer.footer {
+    background: black;
+    color: white;
+    text-align: center;
+    padding: 15px 0;
+    position: relative;
+    margin-top: auto;
+}
+
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    .container {
+        width: 90%; /* Adjust width for smaller screens */
+        padding: 15px; /* Reduce padding */
+    }
+
+    textarea {
+        height: 80px; /* Adjust textarea height */
+        font-size: 14px; /* Smaller font size for mobile */
+    }
+
+    button {
+        padding: 8px 16px; /* Smaller button size */
+        font-size: 14px;
+    }
+}
+
+/* Media Query for Very Small Devices */
+@media (max-width: 480px) {
+    h1 {
+        font-size: 18px; /* Adjust heading size */
+    }
+
+    textarea {
+        height: 70px; /* Smaller textarea for tiny screens */
+        font-size: 12px;
+    }
+
+    button {
+        padding: 6px 12px; /* Further reduce button size */
+        font-size: 12px;
+    }
+}

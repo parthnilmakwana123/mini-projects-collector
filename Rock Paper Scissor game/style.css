@@ -1,0 +1,141 @@
+* {
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+body {
+    background-color: antiquewhite;
+    min-height: 100vh; /* Ensure the body covers the full viewport */
+    display: flex; /* Flexbox layout for alignment */
+    flex-direction: column; /* Stack child elements vertically */
+}
+
+.nav {
+    background-color: #081b31;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+}
+
+.heading {
+    color: white;
+}
+
+.main-section {
+    flex: 1; /* Take up available space between nav and footer */
+    height: auto; /* Allow dynamic height */
+}
+
+.choices {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 5rem;
+}
+
+.choice {
+    height: 200px;
+    width: 200px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.choice:hover {
+    cursor: pointer;
+    background-color: #081b31;
+}
+
+img {
+    height: 180px;
+    width: 180px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.score-board {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    gap: 5rem;
+    margin-top: 5rem;
+    padding-bottom: 3rem;
+}
+
+#user-score,
+#comp-score {
+    font-size: 4rem;
+}
+
+#msg {
+    color: #fff;
+    background-color: #081b31;
+    font-size: 2rem;
+    display: inline;
+    border-radius: 1rem;
+    padding: 1rem;
+    margin-top: 2rem;
+}
+
+.footer {
+    color: #fff;
+    background-color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 8vh;
+    width: 100%; /* Ensure it spans the full width */
+    position: relative; /* Positioned relative to the body */
+    margin-top: 30px; /* Push the footer to the bottom when content is short */
+}
+
+@media only screen and (max-width: 480px) {
+    .choices {
+        flex-direction: column;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 3rem;
+    }
+
+    .choice {
+        height: 140px;
+        width: 140px;
+    }
+
+    img {
+        height: 125px;
+        width: 125px;
+    }
+
+    .choices-wrapper {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+
+    .score-board {
+        gap: 2.5rem;
+        font-size: 1.5rem;
+        margin-top: 3rem;
+    }
+
+    #user-score,
+    #comp-score {
+        font-size: 2.5rem;
+    }
+
+    #msg {
+        font-size: 1.4rem;
+        padding: 0.5rem;
+        margin-top: 1.5rem;
+    }
+
+    .footer {
+        height: 6vh; /* Adjust height for smaller screens */
+    }
+}

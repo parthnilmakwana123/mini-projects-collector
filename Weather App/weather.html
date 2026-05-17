@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Weather App</title>
+    <link rel="stylesheet" href="../src/output.css" />
+  </head>
+  <body class="flex justify-center items-center h-screen">
+    <div class="bg-gray-400 h-96 w-auto rounded-2xl">
+      <div class="mt-8">
+        <input
+          class="px-4 py-2 m-4 bg-gray-300 rounded-2xl"
+          id="city"
+          type="text"
+          required
+          placeholder="Enter a city name"
+        />
+        <button
+          class="px-6 py-2 m-2 rounded-2xl border-2 bg-gray-800 text-white"
+          id="fetchBtn"
+        >
+          fetch
+        </button>
+      </div>
+
+      <div id="details" class="my-6 ml-6 w-full">
+        <p>Weather : --</p>
+        <p>Temp : --</p>
+        <p>Feel like : --</p>
+        <p>Humidity : --</p>
+        <p>After every fetch press restart button</p>
+      </div>
+
+       <button id="restartBtn"
+          class="px-6 py-2 m-2 rounded-2xl border-2 bg-gray-800 text-white"
+         
+        >
+          restart
+        </button>
+     
+    </div>
+
+    <script>
+      const MY_API = "cb016cba3709f6a7d1db6247351d46b5";
+      let fetchBtn = document.getElementById('fetchBtn')
+      let details = document.getElementById('details')
+      let restartBtn = document.getElementById('restartBtn')
+      
+      // https://api.openweathermap.org/data/2.5/weather?q=Rajkot&appid=cb016cba3709f6a7d1db6247351d46b5&units=metric
+      
+      
+      fetchBtn.addEventListener('click', ()=>{
+    let city = document.getElementById('city').value;
+    fetchBtn.disabled = true
+
+    const weather = async () => {
+      let response = await fetch(
+        `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${MY_API}&units=metric`,
+      );
+      let data = await response.json();
+      console.log(data);
+details.innerHTML = `
+  <p>Weather : ${data.weather[0].main}</p>
+        <p>Temp : ${data.main.temp}</p>
+        <p>Feel like : ${data.main.feels_like}</p>
+        <p>Humidity : ${data.main.humidity}</p>
+        
+        <p>After every fetch press restart button</p>
+        
+
+`
+    };
+
+    weather();
+})
+
+restartBtn.addEventListener('click', ()=>{
+    window.location.reload()
+    fetchBtn.disabled = false;
+})
+    </script>
+  </body>
+</html>
